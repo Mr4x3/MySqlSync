@@ -3,6 +3,10 @@ Package to compare and generate query file Needed to add, diffrence
 in schema, between two server development database and local database.
 
 Usages:
+>>python3 MySqlSync.py [options] <source> <target>
+        ###source/target format: mysql://user:pass@host:port/database##
+
+Examples:
 ***********************************************************************
 >> python3.4 MySqlSync.py mysql://username:password@developmentserver:3306/local mysql://username:password:@productionserver:3306/other
 ************************************************************************
