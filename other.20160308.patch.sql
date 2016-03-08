@@ -1,5 +1,5 @@
 --
--- Schema Sync 0.1.1 Patch Script
+-- Schema Sync 0.1 Patch Script
 -- Created: Tue, Mar 08, 2016
 -- Server Version: 5.5.47-0ubuntu0.14.04.1
 -- Apply To: localhost/other

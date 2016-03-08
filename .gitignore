@@ -1,7 +1,7 @@
 #Other Files
 .pyc
 .bak
-.sql
+*.sql
 .log
 
 

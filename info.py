@@ -1,9 +1,10 @@
 __author__ = "Vivek"
 __copyright__ = "CopyLeft"
-__version__ = "0.1.1"
+__version__ = "0.1"
 __license__ = "BSD"
 APPLICATION_VERSION = __version__
-APPLICATION_NAME = "Schema Sync"
-LOG_FILENAME = "schemasync.log"
+APPLICATION_NAME = "MySqlSync"
+LOG_FILENAME = "MySqlSyc.log"
 DATE_FORMAT = "%Y%m%d"
 TPL_DATE_FORMAT = "%a, %b %d, %Y"
+T="*"
