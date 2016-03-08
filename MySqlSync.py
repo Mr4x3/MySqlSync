@@ -1,9 +1,9 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
-__author__ = "Mitch Matuson"
-__copyright__ = "Copyright 2009 Mitch Matuson"
-__version__ = "0.9.1"
-__license__ = "Apache 2.0"
+__author__ = "Vivek"
+__copyright__ = "CopyLeft"
+__version__ = "0.1.1"
+__license__ = "BSD"
 
 import re
 import sys
@@ -21,13 +21,13 @@ warnings.simplefilter("ignore", DeprecationWarning)
 try:
     import MySQLdb
 except ImportError:
-    print "Error: Missing Required Dependency MySQLdb."
+    print("Error: Missing Required Dependency MySQLdb.")
     sys.exit(1)
 
 try:
     import schemaobject
 except ImportError:
-    print "Error: Missing Required Dependency SchemaObject"
+    print("Error: Missing Required Dependency SchemaObject")
     sys.exit(1)
 
 
@@ -108,7 +108,7 @@ def parse_cmd_line(fn):
 
 
         if options.show_version:
-            print APPLICATION_NAME, __version__
+            print((APPLICATION_NAME, __version__))
             return 0
 
         if (not args) or (len(args) != 2):
@@ -132,16 +132,16 @@ def app(sourcedb='', targetdb='', version_filename=False,
     options = locals()
 
     if not os.path.isabs(output_directory):
-        print "Error: Output directory must be an absolute path. Quiting."
+        print("Error: Output directory must be an absolute path. Quiting.")
         return 1
 
     if not os.path.isdir(output_directory):
-        print "Error: Output directory does not exist. Quiting."
+        print("Error: Output directory does not exist. Quiting.")
         return 1
 
     if not log_directory or not os.path.isdir(log_directory):
         if log_directory:
-            print "Log directory does not exist, writing log to %s" % output_directory
+            print(("Log directory does not exist, writing log to %s" % output_directory))
         log_directory = output_directory
 
     logging.basicConfig(filename=os.path.join(log_directory, LOG_FILENAME),
@@ -250,7 +250,7 @@ def app(sourcedb='', targetdb='', version_filename=False,
                          "Patch Script: %s\nRevert Script: %s"
                          % (target_obj.host, target_obj.selected.name,
                             pBuffer.name, rBuffer.name))
-        except OSError, e:
+        except OSError as e:
             pBuffer.delete()
             rBuffer.delete()
             logging.error("Failed writing migration scripts. %s" % e)
@@ -262,11 +262,11 @@ def app(sourcedb='', targetdb='', version_filename=False,
 def main():
     try:
         sys.exit(parse_cmd_line(app)())
-    except schemaobject.connection.DatabaseError, e:
+    except schemaobject.connection.DatabaseError as e:
         logging.error("MySQL Error %d: %s" % (e.args[0], e.args[1]))
         sys.exit(1)
     except KeyboardInterrupt:
-        print "Sync Interrupted, Exiting."
+        print("Sync Interrupted, Exiting.")
         sys.exit(1)
 
 

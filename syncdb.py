@@ -268,7 +268,7 @@ def sync_created_columns(from_cols, to_cols, sync_comments=False):
     """
     for c in from_cols:
         if c not in to_cols:
-            fprev = get_previous_item(from_cols.keys(), c)
+            fprev = get_previous_item(list(from_cols.keys()), c)
             yield (from_cols[c].create(after=fprev, with_comment=sync_comments),
                    from_cols[c].drop())
 
@@ -287,7 +287,7 @@ def sync_dropped_columns(from_cols, to_cols, sync_comments=False):
     """
     for c in to_cols:
         if c not in from_cols:
-            tprev = get_previous_item(to_cols.keys(), c)
+            tprev = get_previous_item(list(to_cols.keys()), c)
             yield (to_cols[c].drop(),
                    to_cols[c].create(after=tprev, with_comment=sync_comments))
 
@@ -306,8 +306,8 @@ def sync_modified_columns(from_cols, to_cols, sync_comments=False):
     """
     # find the column names comomon to each table
     # and retain the order in which they appear
-    from_names = [c for c in from_cols.keys() if c in to_cols]
-    to_names = [c for c in to_cols.keys() if c in from_cols]
+    from_names = [c for c in list(from_cols.keys()) if c in to_cols]
+    to_names = [c for c in list(to_cols.keys()) if c in from_cols]
 
     for from_idx, name in enumerate(from_names):
 
@@ -327,8 +327,8 @@ def sync_modified_columns(from_cols, to_cols, sync_comments=False):
                 to_names.remove(name)
                 to_names.insert(from_idx, name)
 
-            fprev = get_previous_item(from_cols.keys(), name)
-            tprev = get_previous_item(to_cols.keys(), name)
+            fprev = get_previous_item(list(from_cols.keys()), name)
+            tprev = get_previous_item(list(to_cols.keys()), name)
             yield (from_cols[name].modify(after=fprev, with_comment=sync_comments),
                    to_cols[name].modify(after=tprev, with_comment=sync_comments))
 

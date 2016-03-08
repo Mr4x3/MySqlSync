@@ -60,7 +60,7 @@ class DatabaseConnection(object):
 
     def execute(self, sql, values=None):
         cursor = self._db.cursor()
-        if isinstance(values, (basestring, unicode)):
+        if isinstance(values, str):
             values = (values,)
         cursor.execute(sql, values)
 
@@ -71,7 +71,7 @@ class DatabaseConnection(object):
         rows = cursor.fetchall()
 
         cursor.close()
-        return  [dict(zip(fields, row)) for row in rows]
+        return  [dict(list(zip(fields, row))) for row in rows]
 
     def connect(self, connection_url):
         """Connect to the database"""

@@ -4,7 +4,7 @@ import re
 import os
 import datetime
 import glob
-import io
+import cStringIO
 
 #REGEX_NO_TICKS = re.compile('`')
 #REGEX_INT_SIZE = re.compile('int\(\d+\)')
@@ -32,7 +32,7 @@ def versioned(filename):
     if not files:
         return filename
 
-    files= [REGEX_FILE_COUNTER.search(x, re.I) for x in files]
+    files= map(lambda x: REGEX_FILE_COUNTER.search(x, re.I), files)
     file_counters = [i.group('i') for i in files if i]
 
     if file_counters:
@@ -84,7 +84,7 @@ class PatchBuffer(object):
 
     def __init__(self, name, filters, tpl, ctx, version_filename=False):
         """Inits the PatchBuffer class"""
-        self._buffer = io.StringIO()
+        self._buffer = cStringIO.StringIO()
         self.name = name
         self.filters = filters
         self.tpl = tpl
