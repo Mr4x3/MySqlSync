@@ -13,11 +13,6 @@ import datetime
 import optparse
 import syncdb
 import utils
-import warnings
-
-# supress MySQLdb DeprecationWarning in Python 2.6
-warnings.simplefilter("ignore", DeprecationWarning)
-
 try:
     import MySQLdb
 except ImportError:
@@ -210,7 +205,7 @@ def app(sourcedb='', targetdb='', version_filename=False,
                target_database=target_obj.selected.name,
                created=datetime.datetime.now().strftime(TPL_DATE_FORMAT))
 
-    p_fname, r_fname = utils.create_pnames(target_obj.selected.name, 
+    p_fname, r_fname = utils.create_pnames(target_obj.selected.name,
                                            tag=tag,
                                            date_format=DATE_FORMAT)
 
