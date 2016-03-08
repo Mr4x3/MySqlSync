@@ -1,10 +1,4 @@
 #!/usr/bin/python3
-
-__author__ = "Vivek"
-__copyright__ = "CopyLeft"
-__version__ = "0.1.1"
-__license__ = "BSD"
-
 import re
 import sys
 import os
@@ -13,6 +7,8 @@ import datetime
 import optparse
 import syncdb
 import utils
+import info
+
 try:
     import MySQLdb
 except ImportError:
@@ -25,12 +21,6 @@ except ImportError:
     print("Error: Missing Required Dependency SchemaObject")
     sys.exit(1)
 
-
-APPLICATION_VERSION = __version__
-APPLICATION_NAME = "Schema Sync"
-LOG_FILENAME = "schemasync.log"
-DATE_FORMAT = "%Y%m%d"
-TPL_DATE_FORMAT = "%a, %b %d, %Y"
 PATCH_TPL = """--
 -- Schema Sync %(app_version)s %(type)s
 -- Created: %(created)s
