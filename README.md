@@ -2,7 +2,7 @@
 Package to compare and generate query(patch) file Needed to add to destination database(production), so that new changes from development database can be incorporated into production database.
 
 Usages:
->>python3 MySqlSync.py [options] <source> <target>
+>>python3 MySqlSync.py [options] /<source> /<target>
 
 >>source/target format: mysql://user:pass@host:port/database
 
