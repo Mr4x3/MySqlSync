@@ -5,7 +5,7 @@ in schema, between two server development database and local database.
 Usages:
 >>python3 MySqlSync.py [options] <source> <target>
 
-###source/target format: mysql://user:pass@host:port/database##
+>>source/target format: mysql://user:pass@host:port/database##
 
 Examples:
 ***********************************************************************
