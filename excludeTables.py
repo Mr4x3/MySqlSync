@@ -1,9 +1,15 @@
 #!/usr/bin/python3
-
+#Hardcoded
 #Custom Hardcoded Wraapper for sql file created
+#this Will exclude some tables which are to be Excluded
+
 import MySQLdb
 import sys
 import re
+
+r=sys.argv
+status=os.popen('python3 {} {} {}'.format(r[1],r[2]))
+#source,destination
 print("Usage $python3 queryFileTodb.py database.sql host user password database")
 z= sys.argv
 listOfExcludedTables=['django_','auth_']

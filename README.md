@@ -1,6 +1,5 @@
-# MySqlSync Version 0.1*
-Package to compare and generate query file Needed to add, diffrence
-in schema, between two server development database and local database.
+# MySqlSync Version 0.2*
+Package to compare and generate query(patch) file Needed to add to destination database(production), so that new changes from development database can be incorporated into production database.
 
 Usages:
 >>python3 MySqlSync.py [options] <source> <target>
@@ -29,6 +28,7 @@ https://pypi.python.org/pypi/SchemaObject
 - [x] Documentation
 - [ ] Problem with foreignkey
 - [ ] Create Revert Back changes
-- [ ] Create For 2 Diffrent files
+- [ ] Create For 2 Diffrent Schema files
 - [ ] Add Support for Excluded tables
 - [x] HardCoded Above
+- [ ] Clean Code Of Useless Commenting

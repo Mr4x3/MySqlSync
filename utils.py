@@ -1,5 +1,3 @@
-"""Utility functions for Schema Sync"""
-
 import re
 import os
 import datetime

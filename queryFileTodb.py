@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 
 #Feed a sql as a schema and there will be updates in given databse
-
+import os
 import MySQLdb
 import sys
+
 print("Usage $python3 queryFileTodb.py database.sql host user password database")
 z= sys.argv
 #Arguments Given as (database.sql, host, user, password, database)
