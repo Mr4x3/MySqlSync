@@ -1,0 +1,10 @@
+__author__ = "Vivek"
+__copyright__ = "CopyLeft"
+__version__ = "0.1"
+__license__ = "BSD"
+APPLICATION_VERSION = __version__
+APPLICATION_NAME = "MySqlSync"
+LOG_FILENAME = "results/MySqlSync.log"
+DATE_FORMAT = "%Y%m%d"
+TPL_DATE_FORMAT = "%a, %b %d, %Y"
+T="*"
