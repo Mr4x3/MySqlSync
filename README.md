@@ -1,4 +1,4 @@
-# MySqlSync
+# MySqlSync Version 0.1*
 Package to compare and generate query file Needed to add, diffrence
 in schema, between two server development database and local database.
 
@@ -24,4 +24,11 @@ For creating schemaobject package by which database can be interacted using pyth
 
 http://matuson.com/code/schemaobject
 https://pypi.python.org/pypi/SchemaObject
-Also added support for python3
+[x] Added support for python3
+[x] Test on 2 databases
+[x] Documentation
+[ ] Problem with foreignkey
+[ ] Create Revert Back changes
+[ ] Create For 2 Diffrent files
+[ ] Add Support for Excluded tables
+[ ] HardCoded Above
