@@ -38,8 +38,8 @@ def schemamove():
 
 
 def app(sourcedb='', targetdb='', version_filename=False,
-        output_directory="./results/", log_directory="results/",
-        tag=None, sync_auto_inc=False, sync_comments=False,other=None):
+        output_directory="./results/", log_directory="./results/",
+        tag=None, sync_auto_inc=True, sync_comments=False,other=None):
     """Main Powering Application"""
 
     options = locals()
@@ -227,7 +227,7 @@ def parse_cmd_line(fn):
                           help=("set the directory to write the log to. "
                                 "Must use absolute path if provided. "
                                 "Default is output directory. "
-                                "Log filename is schemasync.log"))
+                                "Log filename is {}".format(LOG_FILENAME)))
 
         options, args = parser.parse_args(sys.argv[1:])
 
