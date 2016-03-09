@@ -22,7 +22,7 @@ except ImportError:
     sys.exit(1)
 
 PATCH_TPL = """--
--- MySqlSync %(app_version)s %(type)s
+-- Schema Sync %(app_version)s %(type)s
 -- Created: %(created)s
 -- Server Version: %(server_version)s
 -- Apply To: %(target_host)s/%(target_database)s
@@ -38,7 +38,7 @@ def schemamove():
 
 
 def app(sourcedb='', targetdb='', version_filename=False,
-        output_directory="./results/", log_directory="results/",
+        output_directory=None, log_directory=None,
         tag=None, sync_auto_inc=False, sync_comments=False,other=None):
     """Main Powering Application"""
 
@@ -148,7 +148,7 @@ def app(sourcedb='', targetdb='', version_filename=False,
                 db_selected = True
 
             pBuffer.write(patch + '\n')
-            #rBuffer.write(revert + '\n')
+            rBuffer.write(revert + '\n')
 
     if not pBuffer.modified:
         logging.info(("No migration scripts written."
@@ -158,14 +158,14 @@ def app(sourcedb='', targetdb='', version_filename=False,
     else:
         try:
             pBuffer.save()
-            #rBuffer.save()
+            rBuffer.save()
             logging.info("Migration scripts created for mysql://%s/%s\n"
-                         "Patch Script: %s"
+                         "Patch Script: %s\nRevert Script: %s"
                          % (target_obj.host, target_obj.selected.name,
-                            pBuffer.name, ))#rBuffer.name))
+                            pBuffer.name, rBuffer.name))
         except OSError as e:
             pBuffer.delete()
-            #rBuffer.delete()
+            rBuffer.delete()
             logging.error("Failed writing migration scripts. %s" % e)
             return 1
 
@@ -227,7 +227,7 @@ def parse_cmd_line(fn):
                           help=("set the directory to write the log to. "
                                 "Must use absolute path if provided. "
                                 "Default is output directory. "
-                                "Log filename is schemasync.log"))
+                                "Log filename is {}".format(LOG_FILENAME))
 
         options, args = parser.parse_args(sys.argv[1:])
 
@@ -247,7 +247,6 @@ def parse_cmd_line(fn):
                                  sync_auto_inc=options.sync_auto_inc,
                                  sync_comments=options.sync_comments))
     return processor
-
 
 def main():
     try:
