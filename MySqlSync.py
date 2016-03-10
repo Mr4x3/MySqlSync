@@ -12,7 +12,7 @@ from info import *
 try:
     import MySQLdb
 except ImportError:
-    print("Error: Missing Required Dependency MySQLdb.")
+    print("Just Install MySQLdb For Python3")
     sys.exit(1)
 
 try:
