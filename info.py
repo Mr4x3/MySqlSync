@@ -1,6 +1,6 @@
 __author__ = "Vivek"
 __copyright__ = "CopyLeft"
-__version__ = "0.1"
+__version__ = "0.2"
 __license__ = "BSD"
 APPLICATION_VERSION = __version__
 APPLICATION_NAME = "MySqlSync"

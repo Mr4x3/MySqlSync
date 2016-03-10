@@ -1,6 +1,6 @@
 # MySqlSync Version 0.2*
 ##Dependency:
-###MySQLdb For Python3 https://github.com/clelland/MySQL-for-Python-3.git
+####MySQLdb For Python3 https://github.com/clelland/MySQL-for-Python-3.git
 Package to compare and generate query(patch) file Needed to add to destination database(production), so that new changes from development database can be incorporated into production database.
 
 Usages:
