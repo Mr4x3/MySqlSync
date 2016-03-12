@@ -14,6 +14,7 @@ Examples:
 ************************************************************************
 >> ./MySqlSync.py mysql://username:password@developmentserver:3306/local mysql://username:password:@productionserver:3306/other
 *************************************************************************
+>> python3 MySqlSync.py mysql://user:pass@10.10.11.1:3306/local mysql://user:pass@10.30.121.237:3306/production
 
 The resulting file will generate a new sql query file to use at production server so that it may be imported
 **************************************************************************************************************

@@ -11,11 +11,13 @@ import datetime
 import os
 import time
 from info import *
+import subprocess
 r=sys.argv
 if len(r)<3:
     print("Usage python3 SupplMySqlSync.py [sourcedb] [destinationdb] \n Source and destination format mysql://username:password:@productionserver:3306/other")
-status=os.popen('python3 MySqlSync.py -a {} {}'.format(r[1],r[2]))
-time.sleep(5)
+status=subprocess.Popen(["python3",'MySqlSync.py','-a',r[1],r[2]]).communicate()
+#status=subprocess.Popen(["python3",'MySqlSync.py -a' {} {}".format(r[1],r[2])]).communicate()
+#time.sleep(5)
 #source,destination
 #mysql://username:password:@productionserver:3306/other
 #print("Usage $python3 queryFileTodb.py database.sql host user password database")
@@ -32,7 +34,7 @@ with open(z) as sql:
 #Arguments Given as (database.sql, host, user, password, database)
 with open("final_patch.sql",'w') as fp:
     fp.write("".join(buffer))
-print(z)
+print("Final Patch File Created at {}".format(os.path.join(os.getcwd() + "/final_patch.sql")))
 # Open database connection
 #db1 = MySQLdb.connect(z[2],z[3],z[4])
 #Tupple of (host, user, password, database,)
